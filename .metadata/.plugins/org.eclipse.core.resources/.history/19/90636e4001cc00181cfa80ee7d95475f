@@ -1,0 +1,61 @@
+package com.abc.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.abc.model.BillDetail;
+import com.abc.model.CustomerDetail;
+import com.abc.model.Product;
+import com.abc.model.UserDetail;
+
+public class PaymentHelper {
+	   private static Map<Integer ,UserDetail> userLst=new HashMap<Integer ,UserDetail>();
+	   private static Map<Integer ,CustomerDetail> custLst=new HashMap<Integer ,CustomerDetail>();
+	   private static Map<Integer ,BillDetail> billLst=new HashMap<Integer ,BillDetail>();
+	    
+	   public BillDetail getBillDetail(int id){
+		   //fetch the Bill detail form DB ;
+		   
+		    return billLst.get(id) ;
+		   
+	   }
+	   
+	   public UserDetail getUserDetail(int id){
+		   
+		  return userLst.get(id);
+	   }
+	   
+	   public CustomerDetail getCustomerDetail(int id){
+		   
+			  return custLst.get(id) ;
+	   }
+	   
+	     
+	   // this method is just to set the data for the test case .
+	   
+	        private void setBillData(){
+		   
+		    BillDetail billDetail=new BillDetail();
+			billDetail.setBillId(00012);
+			Product p1=new Product();
+			p1.setProductCode("A1234");
+			p1.setProductCost(500.00);
+			p1.setProductName("ABC");
+			p1.setProductType("Cloth");
+			p1.setGrocery(false);
+			Product p2=new Product();
+			p1.setProductCode("B1234");
+			p1.setProductCost(540000.00);
+			p1.setProductName("PQR");
+			p1.setProductType("Vegatble");
+			p1.setGrocery(true);
+			List<Product> lstOfProduct=new ArrayList<Product>();
+			lstOfProduct.add(p2);
+			lstOfProduct.add(p1);
+			billDetail.setLstOfProduct(lstOfProduct);
+			billLst.put(00012, billDetail);
+	   }
+
+}

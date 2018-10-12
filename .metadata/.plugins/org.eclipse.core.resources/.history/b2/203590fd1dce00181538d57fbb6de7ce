@@ -1,0 +1,10 @@
+package com.abc.util;
+
+public class DateUtil {
+	
+	public static boolean isTwoYearOlder(){
+		
+		return false;
+	}
+
+}

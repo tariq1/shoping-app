@@ -1,0 +1,16 @@
+package com.abc.service;
+
+import org.junit.Test;
+
+public class PaymentTest {
+	
+	@Test
+	public void testGetPayAmount() throws Exception {
+		
+		Payment payment=new Payment();
+		payment.getPayAmount(00012);
+		
+		
+	}
+
+}

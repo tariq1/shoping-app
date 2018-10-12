@@ -1,0 +1,55 @@
+package com.abc.service;
+
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.abc.model.BillDetail;
+import com.abc.model.Product;
+
+public class PaymentTest {
+	
+
+	@Test
+	public void testGetPayAmountWith() throws Exception {
+		
+		Payment payment=new Payment();
+		
+		double result=payment.getPayAmount(00012,11045,1112);
+		assertEquals(905.00, result, 0.00);
+		
+		
+	}
+	
+	public void setProductBillData(){
+		 
+	    BillDetail billDetail=new BillDetail();
+		billDetail.setBillId(00012);
+		Product p1=new Product();
+		p1.setProductCode("A1234");
+		p1.setProductCost(500.00);
+		p1.setProductName("ABC");
+		p1.setProductType("Cloth");
+		p1.setGrocery(false);
+		Product p2=new Product();
+		p2.setProductCode("B1234");
+		p2.setProductCost(500.00);
+		p2.setProductName("PQR");
+		p2.setProductType("Vegatble");
+		p2.setGrocery(true);
+		List<Product> lstOfProduct=new ArrayList<Product>();
+		lstOfProduct.add(p2);
+		lstOfProduct.add(p1);
+		billDetail.setLstOfProduct(lstOfProduct);
+	}
+	
+	public vois setUserDetail(){
+		
+	}
+	
+
+}

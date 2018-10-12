@@ -1,0 +1,20 @@
+package com.abc.service;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class PaymentTest {
+	
+	@Test
+	public void testGetPayAmount() throws Exception {
+		
+		Payment payment=new Payment();
+		
+		double result=payment.getPayAmount(00012);
+		Assert.assertEquals(12.00, result);
+		
+		
+	}
+	
+
+}

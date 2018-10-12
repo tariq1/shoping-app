@@ -1,0 +1,12 @@
+package com.abc.service;
+
+import org.junit.Test;
+
+public class PaymentTest {
+	
+	@Test
+	public void testGetPayAmount(){
+		
+	}
+
+}

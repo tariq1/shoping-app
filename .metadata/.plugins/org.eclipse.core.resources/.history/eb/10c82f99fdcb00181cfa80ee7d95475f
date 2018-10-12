@@ -1,0 +1,87 @@
+package com.abc.service;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import com.abc.model.BillDetail;
+import com.abc.model.CustomerDetail;
+import com.abc.model.Product;
+import com.abc.model.UserDetail;
+
+public class Payment implements IPayment{
+	
+	// can use the farmework to inject the bject insted of hardcode
+	
+	PaymentHelper paymentHelper =new  PaymentHelper();
+
+	
+	public float getPayAmount(int billdId) throws Exception {
+		float billAmount =0;
+		float payableAmount =0;
+		float groceryAmont =0;
+		BillDetail billdetail=paymentHelper.getBillDetail(billdId);
+		//we will take the user id from the request
+		int userId=1;
+		UserDetail   userDetail=paymentHelper.getUserDetail(userId ) ;
+		CustomerDetail custDetail=getCustomerDetail(userId) ;
+		List<Product> lstOfProduct= billdetail.getLstOfProduct() ;
+		
+		
+		if(lstOfProduct !=null) {
+				for(Product p : lstOfProduct){
+					if(p.isGrocery()) {
+						 groceryAmont=groceryAmont+p.getProductCost();
+					 
+					   } else {
+						
+						 billAmount=billAmount + p.getProductCost();
+						
+					}
+				}	
+				
+				if(userDetail.isEmployee()){
+					
+					payableAmount=billAmount-(billAmount*30)/100;
+				}
+				else if(userDetail.isAffilate()){
+					payableAmount=billAmount-(billAmount*10)/100;
+				
+				}else if(isOlderTwoYearOld(custDetail.getStartDate())){
+					
+					payableAmount=billAmount-(billAmount*5)/100;
+				}
+				if((billAmount+groceryAmont) > 100){
+					
+					int discount = (int)(billAmount+groceryAmont) /100 ;
+					payableAmount=billAmount - (discount*5);
+				}	
+		
+		} else {
+			throw new Exception(" product list is empty") ;
+		}
+		
+		return payableAmount+groceryAmont;
+	}
+	
+	 private boolean isOlderTwoYearOld(Date startDate){
+		 Calendar calendar  = Calendar.getInstance();
+		 calendar.add(Calendar.YEAR, -2);
+		 Date d = calendar.getTime();		 
+		 return d.after(startDate) ;
+		 
+	 }
+
+	
+	public Product getProductDetail(int productId) {
+	
+		return null;
+	}
+
+	
+	public CustomerDetail getCustomerDetail(int custId) {
+		
+		return null;
+	}
+
+}

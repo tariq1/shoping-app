@@ -1,0 +1,30 @@
+package com.abc.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.abc.model.BillDetail;
+import com.abc.model.Product;
+
+public class PaymentTest {
+	
+	@Test
+	public void testGetPayAmount() throws Exception {
+		
+		Payment payment=new Payment();
+		
+		BillDetail billDetail=new BillDetail();
+		billDetail.setBillId(00012);
+		Product p1=new Product();
+		p1.setProductCode(A1234);
+		List<Product> lstOfProduct=new ArrayList<Product>();
+		
+		billDetail.setLstOfProduct(lstOfProduct);
+		payment.getPayAmount(00012);
+		
+		
+	}
+
+}

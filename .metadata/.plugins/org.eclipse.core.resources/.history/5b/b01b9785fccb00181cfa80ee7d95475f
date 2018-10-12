@@ -1,0 +1,33 @@
+package com.abc.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.abc.model.BillDetail;
+import com.abc.model.CustomerDetail;
+import com.abc.model.UserDetail;
+
+public class PaymentHelper {
+	    Map<Integer ,UserDetail> userLst=new HashMap<Integer ,UserDetail>();
+	    
+	    Map<Integer ,CustomerDetail> custLst=new HashMap<Integer ,CustomerDetail>();
+	    
+	    
+	   public BillDetail getBillDetail(int id){
+		   //fetch the Bill detail form DB ;
+		   
+		   return new BillDetail() ;
+		   
+	   }
+	   
+	   public UserDetail getUserDetail(int id){
+		   
+		  return userLst.get(id);
+	   }
+	   
+	   public CustomerDetail getCustomerDetail(int id){
+		   
+			  return custLst.get(id);
+		   }
+
+}
